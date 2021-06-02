@@ -1,0 +1,96 @@
+.barra {
+    width: 100%;
+    height: 60px;
+    background-color: #ff5050;
+}
+
+.inputText {
+    width: 15%;
+    height: 80%;
+    margin: 3px;
+}
+
+.pokemonList {
+    width: 15%;
+    background-color: rgb(235, 173, 92);
+    border: solid gray 1px;
+    display: flex;
+    justify-content: center;
+}
+
+.pokemonList:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.menu {
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.menuReturnButton {
+    height: 90%;
+    width: 5%;
+    margin: 3px;
+}
+
+.miBoton {
+    width: 30%;
+}
+
+.miImagenMenu {
+    width: 100%;
+    height: 100%;
+    border: solid greenyellow 10px;
+    border-radius: 5%;
+    padding: 15px;
+}
+
+.miImagenMenu:hover {
+    cursor: pointer;
+    opacity: 70%;
+}
+
+.pokemonData {
+    width: 50%;
+    height: 100%;
+    transform: translate(50%, 0%);
+    border: solid rgb(230, 112, 135) 10px;
+    border-radius: 5%;
+    padding: 20px;
+}
+
+.abilityData {
+    width: 50%;
+    height: 100%;
+    transform: translate(50%, 0%);
+}
+
+.moveData {
+    width: 50%;
+    height: 100%;
+    transform: translate(50%, 0%);
+}
+
+.imagenPokemon {
+    width: 40%;
+}
+
+.fila {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.listaDatos {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.clickeable:hover {
+    cursor: pointer;
+    color: blue;
+}
