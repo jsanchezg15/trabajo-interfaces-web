@@ -8,12 +8,12 @@ Al iniciar la aplicación tenemos dos opciones
 1) Buscar pokemon (imagen izquierda)
 2) Pokemon aleatorio (derecha)
 
-Independientemente del botón que pulsemos la aplicación hará varias llamadas para conseguir todos el nombre y url de cada uno de los pokemon. \
-Esto lo utilizaremos para el buscador que aparecerá arriba a la izquierda. El buscador permite buscar los pokemon que contengan la secuencia de\
-caracteres introducida en el input text. Solo se mostrarán los primeros 10 pokemon encontrados. Al pinchar en cualquiera de las opciones se \
+Independientemente del botón que pulsemos la aplicación hará varias llamadas para conseguir todos el nombre y url de cada uno de los pokemon. 
+Esto lo utilizaremos para el buscador que aparecerá arriba a la izquierda. El buscador permite buscar los pokemon que contengan la secuencia de
+caracteres introducida en el input text. Solo se mostrarán los primeros 10 pokemon encontrados. Al pinchar en cualquiera de las opciones se 
 mostrará la información detallada del pokemon (Utilizamos la url para buscar los datos al pinchar en el nombre del buscador).\
-Si pulsamos el boton de la izquierda el pokemon mostrado será siempre Charizard (la imagen del propio botón)\
-Si pulsamos el botón de la izquierda el pokemon mostrado será aleatorio.\
+Si hemos pulsado el boton de la izquierda el pokemon mostrado será Charizard (la imagen del propio botón)\
+Si hemos pulsado el botón de la derecha el pokemon mostrado será aleatorio.\
 Podemos volver al menu de inicio dandole al botón que aparece arriba al lado del buscador.
 
 
