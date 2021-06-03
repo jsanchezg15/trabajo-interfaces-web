@@ -27,13 +27,13 @@ Datos de habilidades:
   Se muestra el nombre, el efecto y los pokemon que pueden tener la habilidad.
   Se puede hacer click en la lista de pokemon para buscar los datos de dicho pokemon.
   
-Datos de movimiento:
-  Se muestra el nombre, efecto, precisión, potencia, pp (power points) y los pokemon que pueden aprender dicho movimiento.
-  Se puede hacer click en la lista de pokemon para buscar los datos de dicho pokemon.
+Datos de movimiento:\
+  Se muestra el nombre, efecto, precisión, potencia, pp (power points) y los pokemon que pueden aprender dicho movimiento.\
+  Se puede hacer click en la lista de pokemon para buscar los datos de dicho pokemon.\
   
-Datos de item:
-  Se muestra la imagen, el nombre, efecto y pokemon que pueden tener dicho item.
-  Se puede hacer click en la lista de pokemon para buscar los datos de dicho pokemon.
+Datos de item:\
+  Se muestra la imagen, el nombre, efecto y pokemon que pueden tener dicho item.\
+  Se puede hacer click en la lista de pokemon para buscar los datos de dicho pokemon.\
   
   
 
