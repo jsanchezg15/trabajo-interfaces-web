@@ -4,8 +4,8 @@ Carlos Melero y Jorge Sánchez
 
 El trabajo usa una api Rest que aporta información sobre los videojuegos de pokemon.
 
-Al iniciar la aplicación tenemos dos opciones \
-1) Buscar pokemon (imagen izquierda)\
+Al iniciar la aplicación tenemos dos opciones 
+1) Buscar pokemon (imagen izquierda)
 2) Pokemon aleatorio (derecha)
 
 Independientemente del botón que pulsemos la aplicación hará varias llamadas para conseguir todos el nombre y url de cada uno de los pokemon. \
