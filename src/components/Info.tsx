@@ -2,6 +2,7 @@ import React, {FC, useState} from 'react';
 import './misestilos.css';
 import charizard from './charizard.png'
 import pokeball from './pokeball.png'
+import { transform } from 'typescript';
 
 interface IPokemon {
     name: string;
@@ -25,6 +26,7 @@ interface IPokemonData {
     moves: IMove[];
     sprites: {
         front_default: string;
+        front_shiny: string;
     }
 }
 
@@ -59,12 +61,21 @@ interface IItem {
         name: string;
         url: string;
     };
-    version_details: {
-        rarity: number;
-        version: {
+}
+
+interface IItemData {
+    effect_entries: {
+        effect: string;
+        language: {
             name: string;
-            url: string;
-        };
+        }
+    }[];
+    sprites: {
+        default: string;
+    };
+    name: string;
+    held_by_pokemon: {
+        pokemon: IPokemon;
     }[];
 }
 
@@ -119,7 +130,8 @@ const Info: FC = () => {
     const [filteredList, setFilteredList] = useState<IPokemon[]>([]); 
     const [pokemonData,  setPokemonData]  = useState<IPokemonData>();
     const [abilityData,  setAbilityData]  = useState<IAbilityData>();
-    const [moveData,  setMoveData]  = useState<IMoveData>();
+    const [moveData, setMoveData] = useState<IMoveData>();
+    const [itemData, setItemData] = useState<IItemData>();
     
     const search = async (url: string) => {
         const info: IPokemon[] = await searchIteration(url)
@@ -160,6 +172,11 @@ const Info: FC = () => {
         setMoveData(data)
     }
 
+    const searchItemData = async (url: string) => {
+        const data: IItemData = await ( await fetch(url) ).json()
+        setItemData(data)
+    }
+
     const getAbilityEffect = (): string => {
         let effect: string = "Effect not found"
         abilityData?.effect_entries.forEach((elem) => {
@@ -178,6 +195,14 @@ const Info: FC = () => {
         return effect
     }
 
+    const getItemEffect = (): string => {
+        let effect: string = "Effect not found"
+        itemData?.effect_entries.forEach((elem) => {
+            if(elem.language.name === "en")
+                effect = elem.effect
+        })
+        return effect
+    }
 
     return(
         <div>
@@ -200,10 +225,11 @@ const Info: FC = () => {
                     setAbilityData(undefined)
                     setPokemonData(undefined)
                     setMoveData(undefined)
+                    setItemData(undefined)
                 }
                 }>menu</button>}
 
-                {text && filteredList.map((p: IPokemon) => 
+                {text && !menu && filteredList.map((p: IPokemon) => 
                     <div 
                         className="pokemonList"
                         onClick={
@@ -251,23 +277,23 @@ const Info: FC = () => {
             }
             
             {pokemonData && 
-                <div className="pokemonData">
+                <div className="displayData">
                     <div className="fila">
-                        <img className="imagenPokemon" src={pokemonData?.sprites.front_default}></img>
+                        <img className="imagenPokemon" src={pokemonData?.sprites.front_default}></img>                            
 
                         <div className="listaDatos">
                             <div><strong>Nombre: </strong>{pokemonData?.name}</div>
                             <div><strong>Número de la pokedex: </strong>{pokemonData?.id}</div>
                             <div><strong>Altura: </strong>{pokemonData?.height/10 + " m"}</div>
                             <div><strong>Peso: </strong>{pokemonData?.weight/10 + " kg"}</div>
-                        
+
                             {pokemonData?.abilities && 
                                 <div>
                                     <strong>Habilidades</strong>
                                     {pokemonData?.abilities.map((elem: IAbility) => 
                                         <div 
                                             className="clickeable"
-                                            onClick={(e) => {
+                                            onClick={() => {
                                                 searchAbilityData(elem.ability.url)
                                                 setPokemonData(undefined)
                                             }}
@@ -280,13 +306,34 @@ const Info: FC = () => {
                                 <div>
                                     <strong>Items</strong>
                                     {pokemonData?.held_items.map((elem: IItem) => 
-                                        <div>{" - " + elem.item.name}</div>
+                                        <div
+                                            className="clickeable"
+                                            onClick={() => {
+                                                searchItemData(elem.item.url)
+                                                setPokemonData(undefined)
+                                            }}
+                                        >{" - " + elem.item.name}</div>
                                     )}
+                                    {pokemonData?.held_items.length == 0 && <div>None</div>}
                                 </div>
                             }
                         </div>
                     </div>
                     
+                    <button
+                        className="shinyButton"
+                        onClick={() => {
+                            const pokeData: IPokemonData = {
+                                ...pokemonData,
+                                sprites: {
+                                    front_default: pokemonData.sprites.front_shiny,
+                                    front_shiny: pokemonData.sprites.front_default
+                                },
+                            }
+                            setPokemonData(pokeData)
+                        }}
+                    >Shiny</button>
+
                     <div>
                         <strong>Movimientos</strong>
                         {pokemonData?.moves.map((elem: IMove) => 
@@ -303,7 +350,7 @@ const Info: FC = () => {
             }
 
             {abilityData && 
-                <div className="abilityData">
+                <div className="displayData">
                     <div><strong>Name: </strong>{abilityData.name}</div>
                     <div><strong>Effect: </strong>{getAbilityEffect()}</div>
                     <div>
@@ -322,7 +369,7 @@ const Info: FC = () => {
             }
 
             {moveData &&
-                <div className="moveData">
+                <div className="displayData">
                     <div><strong>Name: </strong>{moveData.name}</div>
                     <div><strong>Power: </strong>{moveData.power || " - "}</div>
                     <div><strong>Accuracy: </strong>{moveData.accuracy || " - "}</div>
@@ -341,6 +388,26 @@ const Info: FC = () => {
                                     searchPokemonData(e.url)
                                 }} 
                             >{" - " + e.name}</div>
+                        )}
+                    </div>
+                </div>
+            }
+
+            {itemData && 
+                <div className="displayData">
+                    <img className="imagenObjeto" src={itemData.sprites.default}/>
+                    <div><strong>Name: </strong>{itemData.name}</div>
+                    <div><strong>Effect: </strong>{getItemEffect()}</div>
+                    <div>
+                        <strong>Pokemon that held this item</strong>
+                        {itemData.held_by_pokemon.map((e) => 
+                            <div 
+                                className="clickeable"
+                                onClick={() => {
+                                    setItemData(undefined)
+                                    searchPokemonData(e.pokemon.url)
+                                }} 
+                            >{" - " + e.pokemon.name}</div>
                         )}
                     </div>
                 </div>

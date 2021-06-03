@@ -11,8 +11,9 @@
 }
 
 .pokemonList {
+    margin-left: 4px;
     width: 15%;
-    background-color: rgb(235, 173, 92);
+    background-color: rgb(241, 209, 167);
     border: solid gray 1px;
     display: flex;
     justify-content: center;
@@ -53,29 +54,23 @@
     opacity: 70%;
 }
 
-.pokemonData {
+.displayData {
     width: 50%;
     height: 100%;
     transform: translate(50%, 0%);
     border: solid rgb(230, 112, 135) 10px;
-    border-radius: 5%;
+    border-radius: 30px;
     padding: 20px;
-}
-
-.abilityData {
-    width: 50%;
-    height: 100%;
-    transform: translate(50%, 0%);
-}
-
-.moveData {
-    width: 50%;
-    height: 100%;
-    transform: translate(50%, 0%);
+    background-color: ivory;
 }
 
 .imagenPokemon {
     width: 40%;
+}
+
+.imagenObjeto {
+    width: 20%;
+    transform: translate(50%, 0%);
 }
 
 .fila {
@@ -93,4 +88,15 @@
 .clickeable:hover {
     cursor: pointer;
     color: blue;
+}
+
+.shinyButton {
+    margin-left: 40%;
+    width: 15%;
+    height: 10%;
+}
+
+.shinyButton:hover {
+    cursor: pointer;
+    color: grey;
 }
