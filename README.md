@@ -1,6 +1,5 @@
 
-# Explicación trabajo
-Carlos Melero y Jorge Sánchez
+# Explicación trabajo Carlos Melero y Jorge Sánchez
 
 El trabajo usa una api Rest que aporta información sobre los videojuegos de pokemon.
 
